@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+
+<ImageView
+    android:id="@+id/imageView4"
+    android:layout_width="388dp"
+    android:layout_height="226dp"
+    android:layout_marginTop="40dp"
+    android:scaleType="centerCrop"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.695"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:srcCompat="@drawable/lightblueimage" />
+
+<Button
+    android:id="@+id/rockButton"
+    android:layout_width="106dp"
+    android:layout_height="48dp"
+    android:layout_marginStart="36dp"
+    android:layout_marginTop="312dp"
+    android:onClick="setUserChoice"
+    android:text="Камень"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<Button
+    android:id="@+id/paperButton"
+    android:layout_width="103dp"
+    android:layout_height="48dp"
+    android:layout_marginStart="80dp"
+    android:layout_marginTop="384dp"
+    android:onClick="setUserChoice"
+    android:text="Бумага"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<Button
+    android:id="@+id/scissorsButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="312dp"
+    android:layout_marginEnd="44dp"
+    android:onClick="setUserChoice"
+    android:text="Ножницы"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<Button
+    android:id="@+id/lizardButton"
+    android:layout_width="116dp"
+    android:layout_height="48dp"
+    android:layout_marginTop="384dp"
+    android:layout_marginEnd="76dp"
+    android:onClick="setUserChoice"
+    android:text="Ящерица"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<Button
+    android:id="@+id/spockButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="454dp"
+    android:text="Спок"
+    android:onClick="setUserChoice"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<Button
+    android:id="@+id/playButton"
+    android:layout_width="359dp"
+    android:layout_height="54dp"
+    android:layout_marginStart="23dp"
+    android:layout_marginEnd="23dp"
+    android:layout_marginBottom="10dp"
+    android:text="Игра"
+    android:onClick="startGame"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+<TextView
+    android:id="@+id/tv_game_result"
+    android:layout_width="250dp"
+    android:layout_height="18dp"
+    android:layout_marginStart="177dp"
+    android:layout_marginEnd="177dp"
+    android:layout_marginBottom="36dp"
+    android:textAlignment="center"
+    app:layout_constraintBottom_toTopOf="@+id/playButton"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.502"
+    app:layout_constraintStart_toStartOf="parent" />
+
+<TextView
+    android:id="@+id/tv_payer_choice"
+    android:layout_width="170dp"
+    android:layout_height="20dp"
+    android:layout_marginEnd="26dp"
+    android:layout_marginBottom="52dp"
+    android:textAlignment="center"
+    app:layout_constraintBottom_toTopOf="@+id/tv_game_result"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+<TextView
+    android:id="@+id/tv_bot_choice"
+    android:layout_width="170dp"
+    android:layout_height="20dp"
+    android:layout_marginStart="26dp"
+    android:layout_marginBottom="52dp"
+    android:text=""
+    android:textAlignment="center"
+    app:layout_constraintBottom_toTopOf="@+id/tv_game_result"
+    app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

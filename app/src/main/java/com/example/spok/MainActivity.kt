@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var userChoice: GameItems = GameItems.NONE
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -19,6 +19,18 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvPayerChoice.setTextColor(ContextCompat.getColor(this, R.color.blue))
         binding.tvBotChoice.setTextColor(ContextCompat.getColor(this, R.color.red))
+    }
+
+    //  метод, который вызывается при нажатии на кнопку выбора
+    fun setUserChoice(control: View) {
+        userChoice = when (control.id) {
+            binding.lizardButton.id -> GameItems.LIZARD
+            binding.rockButton.id -> GameItems.ROCK
+            binding.paperButton.id -> GameItems.PAPER
+            binding.spockButton.id -> GameItems.SPOCK
+            binding.scissorsButton.id -> GameItems.SCISSORS
+            else -> GameItems.NONE
+        }
     }
 
     // метод, который запускает игру
@@ -42,18 +54,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //  метод, который вызывается при нажатии на кнопку выбора
-    fun setUserChoice(control: View) {
-        userChoice = when (control.id) {
-            binding.lizardButton.id -> GameItems.LIZARD
-            binding.rockButton.id -> GameItems.ROCK
-            binding.paperButton.id -> GameItems.PAPER
-            binding.spockButton.id -> GameItems.SPOCK
-            binding.scissorsButton.id -> GameItems.SCISSORS
-            else -> GameItems.NONE
-        }
-    }
-
     // метод, генерирует случайный выбор для бота
     private fun getItemForBot(): GameItems {
         val result = Random.nextInt(0, 5)
@@ -67,6 +67,15 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // метод для определения победителя на основе выбора игрока и бота
+    private fun opredWinner(userChoice: GameItems, botChoice: GameItems): Int {
+        return when {
+            userChoice == botChoice -> 0  // ничья
+            botChoice in userChoice.defeats -> 1  // победа игрока
+            else -> -1  // победа бота
+        }
+    }
+
     // Функция для перевода выбора в строку на русском
     private fun getChoiceName(choice: GameItems): String {
         return when (choice) {
@@ -76,15 +85,6 @@ class MainActivity : AppCompatActivity() {
             GameItems.LIZARD -> "Ящерица"
             GameItems.SPOCK -> "Спок"
             else -> "Не выбран"
-        }
-    }
-
-    // метод для определения победителя на основе выбора игрока и бота
-    private fun opredWinner(userChoice: GameItems, botChoice: GameItems): Int {
-        return when {
-            userChoice == botChoice -> 0  // ничья
-            botChoice in userChoice.defeats -> 1  // победа игрока
-            else -> -1  // победа бота
         }
     }
 }

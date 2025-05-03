@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var userChoice: GameItems = GameItems.NONE
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -19,10 +19,26 @@ class MainActivity : AppCompatActivity() {
 
         binding.tvPayerChoice.setTextColor(ContextCompat.getColor(this, R.color.blue))
         binding.tvBotChoice.setTextColor(ContextCompat.getColor(this, R.color.red))
+
+
+        binding.lizardButton.setBackgroundColor(ContextCompat.getColor(this, R.color.purple))
+        binding.rockButton.setBackgroundColor(ContextCompat.getColor(this, R.color.purple))
+        binding.paperButton.setBackgroundColor(ContextCompat.getColor(this, R.color.purple))
+        binding.spockButton.setBackgroundColor(ContextCompat.getColor(this, R.color.purple))
+        binding.scissorsButton.setBackgroundColor(ContextCompat.getColor(this, R.color.purple))
+        binding.playButton.setBackgroundColor(ContextCompat.getColor(this, R.color.purple))
     }
 
     //  метод, который вызывается при нажатии на кнопку выбора
     fun setUserChoice(control: View) {
+        binding.lizardButton.setBackgroundColor(ContextCompat.getColor(control.context, R.color.purple))
+        binding.rockButton.setBackgroundColor(ContextCompat.getColor(control.context, R.color.purple))
+        binding.paperButton.setBackgroundColor(ContextCompat.getColor(control.context, R.color.purple))
+        binding.spockButton.setBackgroundColor(ContextCompat.getColor(control.context, R.color.purple))
+        binding.scissorsButton.setBackgroundColor(ContextCompat.getColor(control.context, R.color.purple))
+
+        control.setBackgroundColor(ContextCompat.getColor(control.context, R.color.orange))
+
         userChoice = when (control.id) {
             binding.lizardButton.id -> GameItems.LIZARD
             binding.rockButton.id -> GameItems.ROCK
@@ -35,6 +51,12 @@ class MainActivity : AppCompatActivity() {
 
     // метод, который запускает игру
     fun startGame(control: View) {
+        binding.lizardButton.setBackgroundColor(ContextCompat.getColor(control.context, R.color.purple))
+        binding.rockButton.setBackgroundColor(ContextCompat.getColor(control.context, R.color.purple))
+        binding.paperButton.setBackgroundColor(ContextCompat.getColor(control.context, R.color.purple))
+        binding.spockButton.setBackgroundColor(ContextCompat.getColor(control.context, R.color.purple))
+        binding.scissorsButton.setBackgroundColor(ContextCompat.getColor(control.context, R.color.purple))
+
         if (userChoice == GameItems.NONE) {
             binding.tvGameResult.text= "Сделайте свой выбор"
             return

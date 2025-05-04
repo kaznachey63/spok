@@ -1,31 +1,41 @@
 package com.example.spok
 
-enum class GameItems() {
-    ROCK {
-        override val defeats: List<GameItems>
-            get() = listOf(SCISSORS, LIZARD)
-    },
-    PAPER {
-        override val defeats: List<GameItems>
-            get() = listOf(ROCK, SPOCK)
-    },
-    SCISSORS {
-        override val defeats: List<GameItems>
-            get() = listOf(PAPER, LIZARD)
-    },
-    LIZARD {
-        override val defeats: List<GameItems>
-            get() = listOf(PAPER, SPOCK)
-    },
-    SPOCK {
-        override val defeats: List<GameItems>
-            get() = listOf(SCISSORS, ROCK)
-    },
+enum class GameItems {
+    ROCK, PAPER, SCISSORS, LIZARD, SPOCK, NONE;
 
-    NONE {
-        override val defeats: List<GameItems>
-            get() = listOf()
-    };
+    // Метод для определения победителя
+    fun getOutcomeAgainst(other: GameItems): GameOutcome {
+        return when (this) {
+            ROCK -> when (other) {
+                SCISSORS, LIZARD -> GameOutcome.WIN
+                PAPER, SPOCK -> GameOutcome.LOSE
+                else -> GameOutcome.DRAW
+            }
+            PAPER -> when (other) {
+                ROCK, SPOCK -> GameOutcome.WIN
+                SCISSORS, LIZARD -> GameOutcome.LOSE
+                else -> GameOutcome.DRAW
+            }
+            SCISSORS -> when (other) {
+                PAPER, LIZARD -> GameOutcome.WIN
+                ROCK, SPOCK -> GameOutcome.LOSE
+                else -> GameOutcome.DRAW
+            }
+            LIZARD -> when (other) {
+                PAPER, SPOCK -> GameOutcome.WIN
+                ROCK, SCISSORS -> GameOutcome.LOSE
+                else -> GameOutcome.DRAW
+            }
+            SPOCK -> when (other) {
+                SCISSORS, ROCK -> GameOutcome.WIN
+                PAPER, LIZARD -> GameOutcome.LOSE
+                else -> GameOutcome.DRAW
+            }
+            NONE -> GameOutcome.DRAW
+        }
+    }
+}
 
-    abstract val defeats: List<GameItems>
+enum class GameOutcome {
+    WIN, LOSE, DRAW
 }
